@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Project 2 Report</title>
+        <style>
+            :root {
+                --color-neutral-95: hsl(220 10% 95%);
+                --color-neutral-90: hsl(220 10% 90%);
+                --color-neutral-80: hsl(220 10% 80%);
+                --color-neutral-70: hsl(220 10% 70%);
+                --color-neutral-60: hsl(220 10% 60%);
+                --color-neutral-50: hsl(220 10% 50%);
+                --color-neutral-40: hsl(220 10% 40%);
+                --color-neutral-30: hsl(220 10% 30%);
+                --color-neutral-20: hsl(220 10% 20%);
+                --color-neutral-10: hsl(220 10% 10%);
+            }
+
+            html {
+                font: 100%/1.5 system-ui;
+                counter-reset: figure;
+                background: var(--color-neutral-95);
+                max-width: min(75vw, 80em);
+                margin: 0 auto;
+            }
+
+            /* Headings */
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                line-height: 1.1;
+                font-weight: 600;
+                text-wrap: balance;
+            }
+
+            h1,
+            h2 {
+                border-bottom: 1px solid var(--color-neutral-80);
+                padding-bottom: 0.2em;
+            }
+
+            h1 {
+                margin-block: 1em 0.5rem;
+                font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+                font-weight: 800;
+
+                small {
+                    display: block;
+                    width: fit-content;
+                    padding: 0.2em 0.5em;
+                    margin-inline: auto;
+                    color: white;
+                    background: var(--color-neutral-40);
+                    font-size: 40%;
+                    text-transform: uppercase;
+                    white-space: nowrap;
+                }
+            }
+
+            h2 {
+                font-size: 180%;
+                color: var(--color-neutral-30);
+            }
+
+            h3 {
+                font-size: 130%;
+            }
+
+            /* Lists */
+
+            ul,
+            ol {
+                padding-inline-start: 2em;
+            }
+
+            li {
+                &::marker {
+                    color: var(--color-neutral-40);
+                }
+
+                + li {
+                    margin-top: 0.2em;
+                }
+            }
+
+            /* Sectioning elements */
+
+            header {
+                padding-block: 1em;
+                text-align: center;
+            }
+
+            main {
+                background: white;
+                color: var(--color-neutral-20);
+                border-radius: 1rem;
+                padding: 0.1rem 2rem;
+            }
+
+            /* Figures */
+
+            figure {
+                margin: 1em 0;
+                padding: 0.5rem;
+                margin-inline: -0.5em;
+                border: 1px solid var(--color-neutral-80);
+                box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+                text-align: center;
+                background: white;
+
+                > figcaption {
+                    font: 500 75% var(--font-sans);
+                    background: var(--color-neutral-95);
+                    padding: 0.5rem;
+                    margin: -0.5rem;
+                    margin-top: 0.5rem;
+                    counter-increment: figure;
+                    text-align: left;
+
+                    &::before {
+                        content: "Figure " counter(figure) ": ";
+                        font-weight: bold;
+                        color: var(--color-neutral-40);
+                    }
+
+                    a:not(:hover, :focus, :active) {
+                        color: inherit;
+                        text-decoration: underline;
+                        text-decoration-color: color-mix(
+                            in lab,
+                            currentColor,
+                            transparent 70%
+                        );
+                    }
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>
+                <small>Project 2</small>
+                Persuasive or Deceptive Visualization?
+            </h1>
+
+            <p>
+                <strong>Kavyan Patel</strong> — <em>kpp007@ucsd.edu</em><br />
+                <strong>Diego Menchaca</strong> — <em>dmenchaca@ucsd.edu</em><br />
+                <strong>Jay Manjrekar</strong> — <em>jmanjrekar@ucsd.edu</em>
+            </p>
+        </header>
+
+        <main>
+            <h2>Proposition: Most NYPD misconduct allegations do not result in officer accountability.</h2>
+
+            <section>
+                <h3>FOR the Proposition</h3>
+
+                <figure>
+                    <img src="Plots/against_allegation_breakdown.png" alt="Stacked proportional bar chart showing 3 in 4 NYPD misconduct allegations end in no officer accountability." />
+                    <figcaption>
+                        3 in 4 NYPD misconduct allegations result in no officer accountability.
+                    </figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul>
+                    <li>
+                        <strong>Decision 1 · Full 33,358-allegation universe shown — no filtering (Score: +2)</strong><br />
+                        Unlike Concept A, this chart uses the complete dataset without any filtering by outcome.
+                        The subtitle explicitly states "All 33,358 allegations," and the proportional bar reflects the full distribution.
+                    </li>
+                    <li>
+                        <strong>Decision 2 · Warm red tones used for unsubstantiated and exonerated outcomes (Score: -0.5)</strong><br />
+                        Unsubstantiated and exonerated outcomes are encoded in two shades of red. These are legally neutral findings,
+                        as an unsubstantiated complaint means the evidence was insufficient, not that misconduct did not occur,
+                        but these colors tend to read as negative or alarming in visualization conventions.
+                    </li>
+                    <li>
+                        <strong>Decision 3 · "3 in 4" headline framing rather than "75.1%" (Score: -0.5)</strong><br />
+                        The title uses a ratio rather than a percentage. They are numerically equivalent, but ratio framing tends to feel more concrete
+                        and personal than a percentage, since it maps onto an implied individual experience rather than just a statistic.
+                    </li>
+                    <li>
+                        <strong>Decision 4 · Substantiated outcomes split into "Other consequences" and "Formal charges" (Score: +1)</strong><br />
+                        Rather than grouping all 8,301 substantiated cases into one category, the chart separates formal charges (11.4%)
+                        from other substantiated outcomes (13.5%). Formal charges represent the most severe end of the CCRB's penalties,
+                        and it gives readers a more accurate picture of what "substantiated" means in practice.
+                        It also has the visual effect of reducing the apparent footprint of the blue segments relative to how they appear in Concept A.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>AGAINST the Proposition</h3>
+
+                <figure>
+                    <img src="Plots/for_substantiated_outcomes.png" alt="Bar chart emphasizing substantiated NYPD misconduct outcomes and officer consequences." />
+                    <figcaption>
+                        Real reports lead to officers facing real consequences.
+                    </figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul>
+                    <li>
+                        <strong>Decision 1 - Universe scoped to substantiated cases only (Score: -2)</strong><br />
+                        The visualization displays only the 8,301 allegations the CCRB substantiated, omitting the 25,057 that were
+                        unsubstantiated or exonerated. The subtitle reads "8,301 substantiated cases" without reference to the full dataset,
+                        so a reader has no basis to ask what fraction of all complaints this represents. Showing the full distribution would reduce
+                        the apparent scale of accountability considerably; only about 1 in 4 allegations reaches any outcome at all.
+                    </li>
+                    <li>
+                        <strong>Decision 2 - Three command discipline tiers collapsed into one bar (Score: -1)</strong><br />
+                        The CCRB distinguishes between Command Discipline, Command Discipline A, and Command Discipline B.
+                        The differences in severity between these are not explained in public-facing documentation.
+                        Collapsing all three into a single "Command discipline" bar (2,604 cases total) reduces clutter and avoids confusion.
+                        It also produces a larger bar that sits more prominently in the chart. Keeping them separate would have yielded
+                        three mid-sized bars whose counts are less striking.
+                    </li>
+                    <li>
+                        <strong>Decision 3 - "Formal charges" bolded and encoded in dark navy (Score: -0.5)</strong><br />
+                        Formal charges are given a bold label and a saturated dark navy, while all other outcomes share a lighter blue.
+                        Formal charges are the plurality outcome, but the two colors imply a greater distinction than the data necessarily supports.
+                        The legend reinforces this by grouping everything other than formal charges under a single label.
+                    </li>
+                    <li>
+                        <strong>Decision 4 - Labels rewritten from original CCRB terminology (Score: -1)</strong><br />
+                        CCRB outcome labels such as "Substantiated (Command Lvl Instructions)" and "Substantiated (Instructions)"
+                        were shortened and reworded to "Supervisory instructions" and "Corrective instructions."
+                        The original phrasing includes qualifiers that the rewritten versions drop. Whether the new labels seem more
+                        or less severe than the originals is somewhat subjective, but they present the outcomes as more deliberate
+                        and consequential-sounding than the source terminology conveys.
+                    </li>
+                    <li>
+                        <strong>Decision 5 - Title uses causal language (Score: -0.5)</strong><br />
+                        The title implies a reliable causal relationship between filing a complaint and an officer receiving a consequence.
+                        "Real" appears twice, which implicitly preempts a skeptical reading. Since only 24.9% of all allegations are substantiated,
+                        the title's framing applies to a minority of complaints, which is not visible anywhere in the chart.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Final Reflection</h2>
+
+                <p>
+                    Our proposition, that the NYPD holds officers accountable for civilian complaints, came from
+                    noticing early in our data exploration that the same dataset could support two completely
+                    opposite conclusions depending on which cases we chose to include. Our main decision was to
+                    make the FOR side only show the substantial 8,301 cases while the AGAINST side started from
+                    all of the 33,385 allegations that were filed. Both versions do not use fake numbers, but rather
+                    only showing the substantiated cases drops 75% of the allegations that never amounted to any
+                    consequence, which is the most important part of the story we are telling. This decision shaped
+                    all of what we built, because after selecting the rows of data to include, the remaining decisions
+                    we made naturally followed from this selection.
+                </p>
+                <p>
+                    Building the FOR visualizations was harder than we expected because the underlying data does
+                    not naturally support an accountability narrative. We had to be selective rather than outright
+                    manipulative. Starting the time-series at 2000 instead of 1985 was the most impactful choice we
+                    made, since cutting out the earlier years removes a long flat period that would completely
+                    undercut the "7x growth" framing we used in the title. Showing absolute case counts instead of
+                    rates was equally important: the number of substantiated cases did grow over time, but so did
+                    the total number of complaints filed, meaning the growth most likely reflects more people filing
+                    complaints rather than the NYPD actually holding more officers accountable. On the AGAINST
+                    side, the data more naturally supported our narrative, so the design work was less about which
+                    data to show and more about how to frame it emotionally. Using red for exonerated outcomes
+                    was the choice we debated most, because exoneration is technically a neutral legal finding, but
+                    the color association is strong enough that most readers will treat it as a negative outcome
+                    without thinking twice about it. The scatter plot shows a filter of officers with 5 or more
+                    complaints, however, a declining substantiation rate among repeated complaints of officers does
+                    not prove the system is “protecting” said officers, which is contrary to what the title is implying to
+                    readers.
+                </p>
+                <p>
+                    Working through both angles helped us think more carefully about what differentiates a
+                    persuasive visualization from a misleading one. The techniques that worked best were never
+                    flashy or obvious. They were choices like where to start a time axis, which rows of data to keep,
+                    or how to word a category label, and none of those feel wrong on their own even when the
+                    overall effect clearly is. We started thinking about ethical visualization as being less about which
+                    specific techniques you use and more about whether a reader could realistically figure out what
+                    the chart is leaving out just by looking at it. Cutting an axis is not automatically misleading if the
+                    scale is clearly labeled. Filtering to a subset is not automatically misleading if the filter is stated
+                    upfront. The problem comes when those choices stack on top of each other in a way that makes
+                    it very hard for a reader to know what they are not seeing. By that measure, several of our FOR
+                    choices go too far, particularly the implication that rising substantiated case counts mean the
+                    NYPD is getting stricter, when the data cannot actually support that conclusion. That was
+                    probably the most useful thing this project taught us: the visualizations that mislead most
+                    effectively are usually the ones that look the most clean and credible, not the ones that look
+                    suspicious.
+                </p>
+            </section>
+        </main>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"c822b88e119346678db149ed7b7721c9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
