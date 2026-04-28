@@ -252,50 +252,46 @@
                 <h2>Final Reflection</h2>
 
                 <p>
-                    Our proposition, that the NYPD holds officers accountable for civilian complaints, came from
-                    noticing early in our data exploration that the same dataset could support two completely
+                    Our proposition, that the NYPD holds officers accountable for civilian complaints, came
+                    from noticing early in our data exploration that the same dataset could support two completely
                     opposite conclusions depending on which cases we chose to include. Our main decision was to
-                    make the FOR side only show the substantial 8,301 cases while the AGAINST side started from
-                    all of the 33,385 allegations that were filed. Both versions do not use fake numbers, but rather
-                    only showing the substantiated cases drops 75% of the allegations that never amounted to any
-                    consequence, which is the most important part of the story we are telling. This decision shaped
-                    all of what we built, because after selecting the rows of data to include, the remaining decisions
-                    we made naturally followed from this selection.
+                    make the FOR side only show the substantiated 8,301 cases, while the AGAINST side started
+                    from all of the 33,358 allegations that were filed (of which 15,448 were unsubstantiated, 9609
+                    were exonerated, and 8,301 were substantiated). Neither version falsifies data, but showing only
+                    the substantiated cases drops 75% of the allegations that never amounted to any consequence,
+                    which is the most important part of the story we’re telling.
                 </p>
                 <p>
-                    Building the FOR visualizations was harder than we expected because the underlying data does
-                    not naturally support an accountability narrative. We had to be selective rather than outright
-                    manipulative. Starting the time-series at 2000 instead of 1985 was the most impactful choice we
-                    made, since cutting out the earlier years removes a long flat period that would completely
-                    undercut the "7x growth" framing we used in the title. Showing absolute case counts instead of
-                    rates was equally important: the number of substantiated cases did grow over time, but so did
-                    the total number of complaints filed, meaning the growth most likely reflects more people filing
-                    complaints rather than the NYPD actually holding more officers accountable. On the AGAINST
-                    side, the data more naturally supported our narrative, so the design work was less about which
-                    data to show and more about how to frame it emotionally. Using red for exonerated outcomes
-                    was the choice we debated most, because exoneration is technically a neutral legal finding, but
-                    the color association is strong enough that most readers will treat it as a negative outcome
-                    without thinking twice about it. The scatter plot shows a filter of officers with 5 or more
-                    complaints, however, a declining substantiation rate among repeated complaints of officers does
-                    not prove the system is “protecting” said officers, which is contrary to what the title is implying to
-                    readers.
+                    Building the FOR chart ended up being simpler than we expected once we committed to
+                    showing only the substantiated cases. From there, most of the remaining decisions were about
+                    making those cases look as consequential as possible. The label renaming was the first choice.
+                    The original CCRB categories like “Substantiated (Command Lvl Instructions)” sound
+                    bureaucratic and minor, and rewriting them as “Supervisory instructions” made them sound more
+                    like actual discipline without changing what they refer to. We collapsed the three command
+                    disciple tiers into a single bar, which not only cleaned up the chart visually, but also produced a
+                    second large bar to give an impression of a busy and functioning system. The color choice (dark
+                    navy for formal charges, lighter blue for everything else) was more straightforward. We wanted
+                    formal charges to read as the defining outcome even though it only applies to about 45% of
+                    substantiated cases. For the AGAINST chart, the numbers were clear enough that the main
+                    decisions were really just about framing. The “3 in 4” title came from feeling that it reads more
+                    personal in a way that “75.1%” doesn’t. That is, it describes what happens to an individual
+                    complain rather than just a statistical aggregate. We spent a significant amount of time on the
+                    color of the proportional bar. Using warm red (that tend to read as negative/alarming) for
+                    unsubstantiated and exonerated outcomes isn’t entirely honest since both are technically neutral
+                    legal findings, but we decided it was in keeping with the overall argument of the chart to use
+                    these colors.
                 </p>
                 <p>
-                    Working through both angles helped us think more carefully about what differentiates a
-                    persuasive visualization from a misleading one. The techniques that worked best were never
-                    flashy or obvious. They were choices like where to start a time axis, which rows of data to keep,
-                    or how to word a category label, and none of those feel wrong on their own even when the
-                    overall effect clearly is. We started thinking about ethical visualization as being less about which
-                    specific techniques you use and more about whether a reader could realistically figure out what
-                    the chart is leaving out just by looking at it. Cutting an axis is not automatically misleading if the
-                    scale is clearly labeled. Filtering to a subset is not automatically misleading if the filter is stated
-                    upfront. The problem comes when those choices stack on top of each other in a way that makes
-                    it very hard for a reader to know what they are not seeing. By that measure, several of our FOR
-                    choices go too far, particularly the implication that rising substantiated case counts mean the
-                    NYPD is getting stricter, when the data cannot actually support that conclusion. That was
-                    probably the most useful thing this project taught us: the visualizations that mislead most
-                    effectively are usually the ones that look the most clean and credible, not the ones that look
-                    suspicious.
+                    The part of the project we found hardest was actually assigning the deception scores.
+                    Some of them kept changing for us, especially the “3 in 4” framing as it’s technically just a
+                    different way of writing 75.1%. The color choice in the AGAINST chart was similar. At some
+                    point, we had to decide whether using red is deceptive if the data genuinely looks bad for the
+                    NYPD no matter how you color it. We’re still not entirely sure. What we do think is that the most
+                    impactful decisions were also the hardest to even notice while making them. Filtering the
+                    substantiated cases in the FOR chart felt completely natural at first, and it took a while to realize
+                    that choosing that denominator was the biggest thing shaping what the chart said. Looking at the
+                    final charts, we think the AGAINST one is more honest overall, mostly because it doesn’t hide
+                    what the data actually shows, though it’s still not totally clean.
                 </p>
             </section>
         </main>
